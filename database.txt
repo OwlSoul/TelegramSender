@@ -1,0 +1,14 @@
+CREATE USER sender_bot WITH ENCRYPTED PASSWORD 'password';
+
+CREATE DATABASE sender_bot;
+
+\c sender_bot;
+
+CREATE TABLE chats (
+    chat_id varchar PRIMARY KEY
+);
+
+GRANT ALL PRIVILEGES ON SCHEMA public TO sender_bot;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO sender_bot;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO sender_bot;
+GRANT ALL PRIVILEGES ON DATABASE sender_bot TO sender_bot;
