@@ -456,7 +456,7 @@ class Application:
 
         self.secret_word = args.secret
         self.host = args.host
-        self.port = args.port
+        self.port = int(args.port)
         self.db_settings['db_host'] = args.db_host
         self.db_settings['db_port'] = int(args.db_port)
         self.db_settings['db_name'] = args.db_name
