@@ -4,7 +4,7 @@ The little Telegram bot, which will receive the message from the socket and broa
 
 ![Telegram Sender](https://raw.githubusercontent.com/OwlSoul/Images/master/TelegramSender/image-01.jpg)
 
-To receive messages, user will need to register with the bot, using the command /register:SecretWord. The SecretWord is a password which is set when running the bot. The bot will passively-aggressively ignore any of your interactions except /start, unless he knows you. And by "he knows you" it means that you registered with the right SecretWord.
+To receive messages, user will need to register with the bot, using the command `/register:SecretWord`. The SecretWord is a password which is set when running the bot. The bot will passively-aggressively ignore any of your interactions except /start, unless he knows you. And by "he knows you" it means that you registered with the right SecretWord.
 
 By default the bot listens on port 16001, the idea that is you send a message there (using netcat, for example), and as soon as you terminate the connection on the socket, the message will be broadcasted via telegram.
 
