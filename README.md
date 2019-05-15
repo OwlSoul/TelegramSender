@@ -54,7 +54,15 @@ Change the user, database name and password according to your desires, of course
 Supply the bot with the token, secret word, host:port (optional) and the database settings. Something like this:
 
 ```
-sender_bot.p TOKEN --secret SECRETWORD --db_host 127.0.0.1 --db_name sender_bot --db_user sender_bot --db_pass password --verbose 3
+sender_bot.py TOKEN \
+    --secret SECRETWORD \
+    --host 0.0.0.0 \
+    --port 16001 \
+    --db_host 172.17.0.1 \
+    --db_name sender_bot \
+    --db_user sender_bot \
+    --db_pass password \
+    --verbose 3
 ```
 
 Bot supports the following CLI arguments:
@@ -93,6 +101,12 @@ nc 127.0.0.1 16001
 Type the message, don't forget to press enter after each line and before you finish.
 Now, terminate netcat the connection (CTRL+C), and the message will be broadcasted.
 
+Or you can actually do this (pretty nice stuff):
+
+```
+cat "Hello there!" > /dev/tcp/127.0.0.1/16001
+```
+
 ## Using the dockerized version of the bot
 
 You can either build the image by yourself:
@@ -110,7 +124,20 @@ docker pull "owlsoul/telegram-sender:dev"
 Now, use command like this to run the bot inside the docker container. Good thing is that you have a log now, and the bot will also autorestart if it fails.
 
 ```
-docker run -it -d --restart unless-stopped --name telegram-sender -p 16001:16001 owlsoul/telegram-sender:dev sender_bot.py TOKEN --secret SECRETWORD --db_host 172.17.0.1 --db_name sender_bot --db_user sender_bot --db_pass password --verbose 3
+docker run -it -d \
+       --restart unless-stopped \
+       -p 16001:16001 \
+       --name telegram-sender owlsoul/telegram-sender:dev \
+       sender_bot.py TOKEN \
+          --secret SECRETWORD \
+          --host 0.0.0.0 \
+          --port 16001 \
+          --db_host 172.17.0.1 \
+          --db_name sender_bot \
+          --db_user sender_bot \
+          --db_pass password \
+          --verbose 3
+
 ```
 
 ## License
