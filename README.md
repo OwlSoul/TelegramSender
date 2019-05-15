@@ -6,6 +6,16 @@ The little Telegram bot, which will receive the message from the socket and broa
 
 To receive messages, user will need to register with the bot, using the command /register:SecretWord. The SecretWord is a password which is set when running the bot. The bot will passively-aggressively ignore any of your interactions except /start, unless he knows you. And by "he knows you" it means that you registered with the right SecretWord.
 
+By default the bot listens on port 16001, the idea that is you send a message there (using netcat, for example), and as soon as you terminate the connection on the socket, the message will be broadcasted via telegram.
+
+## Bot commands
+```
+/start               - Start interacting with the bot
+/register:SecretWord - Say the secret and the bot will register you. Don't forget the SecretWord (/register:SecretWord)
+/forget              - Let the bot forget you
+/users               - See the chat IDs of other users registered with the bot
+```
+
 ## Requirements
 Bot requires a Python3 and the following libraries:
 
@@ -72,6 +82,16 @@ optional arguments:
                      default is 3
 
 ```
+
+## Testing the bot
+Now, to test the bot, use netcat. Assuming the bot listens (as by default) on 127.0.0.1:16001:
+
+```
+nc 127.0.0.1 16001
+```
+
+Type the message, don't forget to press enter after each line and before you finish.
+Now, terminate netcat the connection (CTRL+C), and the message will be broadcasted.
 
 ## Using the dockerized version of the bot
 
