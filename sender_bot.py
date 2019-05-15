@@ -75,7 +75,12 @@ class TCPServerThread(threading.Thread):
         """
         logging.info("TCPServer thread started.")
         # Creating TCP server
-        tcp_server = socketserver.TCPServer((self.app.host, self.app.port), MyTCPRequestHandler)
+        try:
+            tcp_server = socketserver.TCPServer((self.app.host, self.app.port), MyTCPRequestHandler)
+        except Exception as e:
+            logging.critical("Failed to sttart the server, error: %s", str(e))
+            self.app.shutdown()
+            self.app.is_running = False
         tcp_server.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         tcp_server.socket.settimeout(1)
 
