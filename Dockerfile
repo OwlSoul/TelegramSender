@@ -55,6 +55,9 @@ ADD sender_bot.py /home/sender_bot
 RUN chown -R sender_bot:sender_bot /home/sender_bot
 WORKDIR /home/sender_bot
 
+# Setting PATH
+ENV PATH="/home/sender_bot:${PATH}"
+
 # Setting up entry point for this container, it's designed to run as an executable.
 # ENTRYPOINT HERE
 USER sender_bot:sender_bot
