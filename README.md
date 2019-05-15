@@ -28,7 +28,7 @@ Also, you'll need to register your own bot and obtain Telegram Bot Token. Pay re
 
 ## Preparing the database (PostrgeSQL)
 
-These are commands required to create the user and database with which the bott will work by default:
+These are commands required to create the user and database with which the bot will work by default:
 
 ```
 CREATE USER sender_bot WITH ENCRYPTED PASSWORD 'password';
