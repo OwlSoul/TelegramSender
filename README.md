@@ -110,7 +110,7 @@ docker pull "owlsoul/telegram-sender:dev"
 Now, use command like this to run the bot inside the docker container. Good thing is that you have a log now, and the bot will also autorestart if it fails.
 
 ```
-docker run -it -d --restart unless-stopped --name telegram-sender owlsoul/telegram-sender:dev sender_bot.py TOKEN --secret SECRETWORD --db_host 172.17.0.1 --db_name sender_bot --db_user sender_bot --db_pass password --verbose 3
+docker run -it -d --restart unless-stopped --name telegram-sender -p 16001:16001 owlsoul/telegram-sender:dev sender_bot.py TOKEN --secret SECRETWORD --db_host 172.17.0.1 --db_name sender_bot --db_user sender_bot --db_pass password --verbose 3
 ```
 
 ## License
